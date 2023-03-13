@@ -15,11 +15,11 @@ namespace TicketApp.Models
         public string Email { get; set; } = null!;
         public string? PhoneNumber { get; set; } = null!;
         public string Description { get; set; } = null!;
-        public TicketStatus Status { get; set; }
+        
 
         public DateTime TicketDateTime { get; set; }
-        public string CommentText { get; set; } = null!;
-        public DateTime CommentDateTime { get; set; }
+        public TicketStatus Status { get; set; }
+        public ICollection<CommentEntity> Comments { get; set; } = new List<CommentEntity>();
         public Ticket()
         {
             Status = TicketStatus.NotStarted;

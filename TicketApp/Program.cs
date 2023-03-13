@@ -10,8 +10,10 @@ while (true)
     Console.WriteLine("1. Create new ticket");
     Console.WriteLine("2. Show all tickets");
     Console.WriteLine("3. Show a specific ticket");
-    Console.WriteLine("4. Update an existing ticket");
+    Console.WriteLine("4. Update status on a ticket");
     Console.WriteLine("5. Remove a ticket");
+    Console.WriteLine("6. Add a comment");
+    Console.WriteLine("x. Exit program");
 
 
     switch (Console.ReadLine())
@@ -27,7 +29,6 @@ while (true)
             await TicketService.ShowAllTicketsAsync();
 
             break;
-
 
 
         case "3":
@@ -46,6 +47,15 @@ while (true)
             Console.Clear();
             await TicketService.RemoveTicketAsync();
             break;
+
+        case "6":
+            Console.Clear();
+            await TicketService.AddCommentToTicketAsync();
+            break;
+
+        case "x":
+            return;
+            
     }
     Console.WriteLine("Press any key to continue...");
     Console.ReadKey();

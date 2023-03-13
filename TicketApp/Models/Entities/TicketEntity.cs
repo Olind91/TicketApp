@@ -30,15 +30,19 @@ namespace TicketApp.Models.Entities
         public string Description { get; set; } = null!;
 
         public DateTime TicketDateTime { get; set; }
+        
+        
+
 
 
         //FK
         public int Status { get; set; }
+       
         
 
+        public ICollection<CommentEntity> Comments { get; set; } = new List<CommentEntity>();
         
-
-
+        
         public static implicit operator Ticket(TicketEntity entity)
         {
             return new Ticket
@@ -51,7 +55,10 @@ namespace TicketApp.Models.Entities
                 Description = entity.Description,
                 Status = (TicketStatus)entity.Status,
                 TicketDateTime = entity.TicketDateTime,
-
+                Comments = entity.Comments,
+                
+                                            
+                               
             };
         }
 
@@ -66,10 +73,11 @@ namespace TicketApp.Models.Entities
                 CustomerPhone = entity.PhoneNumber,
                 Description = entity.Description,                             
                 TicketDateTime = entity.TicketDateTime,
-
-
-               
-
+                Status = (int)entity.Status,                                                
+                Comments = entity.Comments,
+                
+                
+                            
             };
         }
     }

@@ -12,7 +12,7 @@ namespace TicketApp.Contexts
     internal class DataContext : DbContext
     {        
         
-        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hundmamma\OneDrive\Skrivbord\SqlCourse\TicketApp\TicketApp\Contexts\local_ticket_db.mdf;Integrated Security=True;Connect Timeout=30";
+        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hundmamma\OneDrive\Skrivbord\SqlCourse\TicketApp\TicketApp\Contexts\local_thirdtime_db.mdf;Integrated Security=True;Connect Timeout=30";
 
         public DataContext()
         {

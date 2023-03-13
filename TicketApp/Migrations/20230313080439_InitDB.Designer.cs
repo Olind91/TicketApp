@@ -12,7 +12,7 @@ using TicketApp.Contexts;
 namespace TicketApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230309112654_InitDB")]
+    [Migration("20230313080439_InitDB")]
     partial class InitDB
     {
         /// <inheritdoc />
@@ -40,7 +40,15 @@ namespace TicketApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TicketEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TicketEntityId");
 
                     b.ToTable("Comment");
                 });
@@ -97,6 +105,18 @@ namespace TicketApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ticket");
+                });
+
+            modelBuilder.Entity("TicketApp.Models.Entities.CommentEntity", b =>
+                {
+                    b.HasOne("TicketApp.Models.Entities.TicketEntity", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("TicketEntityId");
+                });
+
+            modelBuilder.Entity("TicketApp.Models.Entities.TicketEntity", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }
